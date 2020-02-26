@@ -21,23 +21,31 @@ class DoublyLinkedList:
         self.length += 1
 
     def remove_from_tail(self):
-        if self.head.value == None:
+        if self.head == None or self.head.value == None:
             return
         node = self.head
 
-        while node.next.value != None:
+        while node.next:
             node = node.next
 
-        node.prev.next = None
+        if self.length > 1:
+            node.prev.next = None
 
         self.length -= 1
 
+        if self.length <= 0:
+            self.head = None
+
     def get_tail(self):
+        if not self.head:
+            return None
         if self.head.next == None:
+            return self.head
+        if self.length == 1:
             return self.head
         node = self.head
 
-        while node.next.value != None:
+        while node.next:
             node = node.next
 
         return node
