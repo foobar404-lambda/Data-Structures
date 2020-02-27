@@ -39,6 +39,7 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(self.s.pop(), 100)
         self.assertEqual(self.s.len(), 0)
         self.assertIsNone(self.s.pop())
+
         self.assertEqual(self.s.len(), 0)
 
 

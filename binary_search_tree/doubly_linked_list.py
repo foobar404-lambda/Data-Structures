@@ -14,8 +14,10 @@ class DoublyLinkedList:
     def add_to_head(self, value, key=None):
         node = Node(value, key)
 
-        self.head.prev = node
-        node.next = self.head
+        if self.head:
+            self.head.prev = node
+            node.next = self.head
+
         self.head = node
 
         self.length += 1

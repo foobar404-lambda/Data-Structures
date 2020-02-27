@@ -11,6 +11,7 @@ class QueueTests(unittest.TestCase):
 
     def test_len_returns_correct_length_after_enqueue(self):
         self.assertEqual(self.q.len(), 0)
+
         self.q.enqueue(2)
         self.assertEqual(self.q.len(), 1)
         self.q.enqueue(4)
@@ -41,8 +42,7 @@ class QueueTests(unittest.TestCase):
         self.assertIsNone(self.q.dequeue())
         self.assertEqual(self.q.len(), 0)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
 
-
-        

@@ -1,7 +1,5 @@
-# import sys
-# sys.path.append('../queue_and_stack')
-# from dll_queue import Queue
-# from dll_stack import Stack
+from dll_queue import Queue
+from dll_stack import Stack
 
 
 class BinarySearchTree:
@@ -76,18 +74,48 @@ class BinarySearchTree:
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node):
-        pass
+    def in_order_print(self, node, stack=None):
+        if not stack:
+            stack = Stack()
+            stack.push(node)
+
+        print(node.value)
+
+        if node.left:
+            self.in_order_print(node.left, stack)
+        print(node.value)
+        if node.right:
+            self.in_order_print(node.left, stack)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        que = Queue()
+        que.enqueue(node)
+
+        while que.len() > 0:
+            unit = que.dequeue()
+            print(unit.value)
+
+            if unit.left:
+                que.enqueue(unit.left)
+            if unit.right:
+                que.enqueue(unit.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack()
+        stack.push(node)
+
+        while stack.len() > 0:
+            unit = stack.pop()
+            print(unit.value)
+
+            if unit.left:
+                stack.push(unit.left)
+            if unit.right:
+                stack.push(unit.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
@@ -99,3 +127,15 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+# n = BinarySearchTree(5)
+
+# n.insert(10)
+# n.insert(1)
+# n.insert(30)
+# n.insert(3)
+# n.insert(4)
+# n.insert(9)
+
+# n.in_order_print(n)
